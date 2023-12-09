@@ -1,7 +1,4 @@
-import service.AlgoritmoDijkstra;
-import service.AlgoritmoGenetico;
-import service.TrocoProgramacaoDinamica;
-import service.TrocoRecursivoGuloso;
+import service.*;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -17,12 +14,14 @@ public class Application {
         System.out.println("21 - Troco guloso");
         System.out.println("22 - Troco dinâmico");
         System.out.println("3  - Algoritmo Dijkstra");
+        System.out.println("6  - Quicksort em 3 partes");
 
         int opcao = sc.nextInt();
         if (opcao == 1) new AlgoritmoGenetico();
         else if (opcao == 21) new TrocoRecursivoGuloso();
         else if (opcao == 22) new TrocoProgramacaoDinamica();
         else if (opcao == 3) new AlgoritmoDijkstra();
+        else if (opcao == 6) new QuickSortTresPartes();
     }
 }
 
