@@ -4,9 +4,11 @@ import java.util.*;
 
 public class AlgoritmoDijkstra {
 
+    private static final int QTD_VERTICES = 6;
+
     public AlgoritmoDijkstra() {
-        int qtdVertices = 6;
-        Grafo graph = new Grafo(qtdVertices);
+
+        Grafo graph = new Grafo(QTD_VERTICES);
 
         graph.adicionaBorda(0, 1, 2);
         graph.adicionaBorda(0, 2, 4);
@@ -24,10 +26,10 @@ public class AlgoritmoDijkstra {
         System.out.println("==== Algoritmo Dijkstra ====");
         System.out.println("============================");
         System.out.println("Dados iniciais: ");
-        System.out.println("      Qtd. Vértices  : " + qtdVertices);
+        System.out.println("      Qtd. Vértices  : " + QTD_VERTICES);
         System.out.println("--------------------------");
 
-        for (int i = 0; i < qtdVertices; i++) {
+        for (int i = 0; i < QTD_VERTICES; i++) {
             System.out.println("A menor distancia entre " + origemVertice + " e " + i + " é: " + distancia[i]);
         }
     }
@@ -59,12 +61,12 @@ public class AlgoritmoDijkstra {
             while (!pq.isEmpty()) {
                 int u = pq.poll().vertice;
 
-                for (Borda edge : adjacente[u]) {
-                    int v = edge.destination;
-                    int weight = edge.weight;
+                for (Borda borda : adjacente[u]) {
+                    int v = borda.destino;
+                    int peso = borda.peso;
 
-                    if (distancia[u] != Integer.MAX_VALUE && distancia[u] + weight < distancia[v]) {
-                        distancia[v] = distancia[u] + weight;
+                    if (distancia[u] != Integer.MAX_VALUE && distancia[u] + peso < distancia[v]) {
+                        distancia[v] = distancia[u] + peso;
                         pq.add(new No(v, distancia[v]));
                     }
                 }
@@ -75,12 +77,12 @@ public class AlgoritmoDijkstra {
     }
 
     static class Borda {
-        private int destination;
-        private int weight;
+        private int destino;
+        private int peso;
 
-        public Borda(int destination, int weight) {
-            this.destination = destination;
-            this.weight = weight;
+        public Borda(int destino, int peso) {
+            this.destino = destino;
+            this.peso = peso;
         }
     }
 

@@ -10,8 +10,6 @@ public class TrocoRecursivoGuloso {
     private static final int TROCO = 63;
 
     public TrocoRecursivoGuloso() {
-        int[] MOEDAS = {1, 5, 10, 21, 25, 50};
-        int TROCO = 63;
 
         System.out.println("==== Algoritmo Recursivo Guloso ====");
         System.out.println("====================================");
