@@ -16,9 +16,10 @@ public class QuickSortTresPartes {
         System.out.println("\n-----------------------------------");
         System.out.println("      Lista classificada: ");
 
-        sort(LISTA_ENTRADA);
+        int[] listaOrdenada = Arrays.copyOf(LISTA_ENTRADA, LISTA_ENTRADA.length);
+        sort(listaOrdenada);
 
-        Arrays.stream(LISTA_ENTRADA).forEach(elemento -> System.out.print(String.format("%s ", elemento)));
+        Arrays.stream(listaOrdenada).forEach(elemento -> System.out.print(String.format("%s ", elemento)));
     }
 
     private static void sort(int[] lista) {
@@ -43,6 +44,7 @@ public class QuickSortTresPartes {
             pivo1 = lista[indMinimo];
             pivo2 = lista[indMaximo];
         } else if (pivo1 == pivo2) {
+            // Correção para evitar loop infinito
             while (pivo1 == pivo2 && indMinimo < indMaximo) {
                 indMinimo++;
                 pivo1 = lista[indMinimo];
@@ -73,9 +75,10 @@ public class QuickSortTresPartes {
     }
 
     private static void troca(int[] lista, int i, int j) {
-        int temp = lista[i];
-        lista[i] = lista[j];
-        lista[j] = temp;
+        if (i != j) {  // Adicionada verificação para evitar trocas desnecessárias
+            int temp = lista[i];
+            lista[i] = lista[j];
+            lista[j] = temp;
+        }
     }
-
 }
